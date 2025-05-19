@@ -1,0 +1,53 @@
+{
+  "images": [
+    {
+      "id": 1,
+      "title": "Sunset in the Mountains",
+      "filename": "sunset_mountains.jpg",
+      "url": "https://example.com/images/sunset_mountains.jpg",
+      "thumbnailUrl": "https://example.com/images/thumbnails/sunset_mountains.jpg",
+      "description": "A beautiful sunset over the mountains with warm colors.",
+      "tags": ["nature", "sunset", "mountains"],
+      "uploadedBy": "JohnDoe",
+      "uploadDate": "2025-05-19T14:30:00Z",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "sizeInBytes": 2048000,
+      "views": 1245,
+      "likes": 320,
+      "comments": [
+        {
+          "user": "JaneDoe",
+          "comment": "Stunning view!",
+          "date": "2025-05-18T10:15:00Z"
+        },
+        {
+          "user": "MarkSmith",
+          "comment": "Love the colors!",
+          "date": "2025-05-18T12:45:00Z"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Ocean Waves",
+      "filename": "ocean_waves.jpg",
+      "url": "https://example.com/images/ocean_waves.jpg",
+      "thumbnailUrl": "https://example.com/images/thumbnails/ocean_waves.jpg",
+      "description": "Powerful waves crashing on the shore.",
+      "tags": ["ocean", "waves", "beach"],
+      "uploadedBy": "AliceBlue",
+      "uploadDate": "2025-05-18T18:00:00Z",
+      "dimensions": {
+        "width": 1920,
+        "height": 1280
+      },
+      "sizeInBytes": 3056000,
+      "views": 890,
+      "likes": 210,
+      "comments": []
+    }
+  ]
+}
