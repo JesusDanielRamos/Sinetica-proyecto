@@ -15,6 +15,8 @@ $usuario = Usuario::buscarPorId($current_user_id);
 // Procesar el formulario de edición
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $bio = $_POST['bio'];
+    $alias = $_POST['alias'];
+    $pronombres = $_POST['pronombres'];
     $profile_image = $usuario['PicProfile'];
 
     // Verificar si se ha subido una nueva imagen
@@ -25,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Actualizar el perfil del usuario
-    Usuario::actualizarPerfil($current_user_id, $bio, $profile_image);
+    Usuario::actualizarPerfil($alias, $pronombres, $bio, $profile_image,  $current_user_id);
     header("Location: perfil.php?user_id=$current_user_id");
     exit;
 }
@@ -34,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>Editar Perfil</title>
     <style>
@@ -97,16 +100,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         .profile-container a:hover {
             background-color: #c0392b;
         }
+
+        .seccion-perfil { display: none; }
+        .seccion-activa { display: block; }
+        .activo-perfil{ background-color: #9B8AED; }
+        .morado{ background-color: #9B8AED!important; }
+        .crema{ background-color: #eef0db!important; }
     </style>
+    <link rel="stylesheet" href="/css/estilo.css">
 </head>
 <body>
-    <div class="profile-container">
+
+<div class="nav_perfil">
+    <ul class="nav_mitad">
+        <li class="tab-btn crema" id="btn-posts"><a  href="#"  onclick="mostrarSeccion('posts')">PUBLICACIONES</a></li>
+        <li class="tab-btn morado" id="btn-info"><a  href="#"  onclick="mostrarSeccion('info')">EDITAR PERFIL</a></li>
+    </ul>
+</div>
+
+    <div class="profile-container fondo">
         <h2>Editar Perfil</h2>
         <a href="perfil.php?user_id=<?= $current_user_id ?>">Regresar a mi perfil</a>
 
         <form method="POST" enctype="multipart/form-data">
-            <label for="bio">Biografía:</label>
-            <textarea name="bio" id="bio"><?= htmlspecialchars($usuario['bio']) ?></textarea>
+      
+        <label for="alias">Alias:</label>
+        <input type="text" name="alias" id="alias" value="<?= htmlspecialchars($usuario['alias']) ?>" >
+
+        <label for="pronombres">Pronombres:</label>
+        <input type="text" name="pronombres" id="pronombres" value="<?= htmlspecialchars($usuario['pronombres']) ?>">
+
+        <label for="bio">Biografía:</label>
+        <textarea name="bio" id="bio"><?= htmlspecialchars($usuario['bio']) ?></textarea>
+
 
             <label for="profile_image">Imagen de perfil:</label>
             <input type="file" name="profile_image" id="profile_image">
@@ -115,6 +141,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <button type="submit">Guardar cambios</button>
         </form>
+        
+        
     </div>
+    <footer>
+    <a href="about.php" style=" text-decoration: none;">© Copyright----Sinetica 2025 </a>  Todos los derechos reservados.
+    </footer>
 </body>
 </html>
