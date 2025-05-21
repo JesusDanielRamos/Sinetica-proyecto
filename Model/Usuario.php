@@ -71,16 +71,15 @@ public static function buscarPorId($user_id) {
 }
 
    // Método para actualizar el perfil de un usuario
-   public static function actualizarPerfil($user_id, $bio, $profile_image) {
+   public static function actualizarPerfil( $alias, $pronombres, $bio, $profile_image,  $current_user_id) {
     global $conn;
 
-    // Preparar la consulta para actualizar el perfil del usuario
-    $sql = "UPDATE  PicProfile = ? WHERE ID = ?";
+    $sql = "UPDATE Usuario SET Alias = ?, Pronombres = ?, Bio = ?, PicProfile = ? WHERE UserID = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssi", $profile_image, $user_id);
+    $stmt->bind_param("ssssi", $alias, $pronombres, $bio, $profile_image, $current_user_id);
 
-    // Ejecutar la consulta y devolver el resultado (true si fue exitoso, false si no)
     return $stmt->execute();
 }
+
 
 }
