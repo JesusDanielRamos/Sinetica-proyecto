@@ -63,8 +63,10 @@ if ($action === 'login') {
         header("Location: ../View/posts.php");
         exit;
     } else {
-        echo "Usuario o contraseña incorrectos.";
+        // Si falla el login
+        header("Location: /View/Login.php?error=1");
         exit;
+
     }
 } 
 else {
